@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<HEAD>
+    <meta charset="UTF-8"/>
+    <title>>retro cute</title>  
+    
+    <!--레트로 폰트-->
+    <LINK HREF="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">  
+    
+    <style>
+     *{
+        box-sizing:border-box;
+     }
+    body {
+        margin:0;
+        height:100vh;
+        background:#F5F1E8;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-family:'VT323',monospace;
+        color:#222;
+    }
+
+    .container {
+        width:90%;
+        max-width:420px;
+        text-align:center;
+    }
+
+    h1 {
+       font-size:36px;
+       margin-bottom:4px;
+       letter-spacing:2px;
+    }
+    .subtitle{
+        font-size:16px;
+        margin-bottom:32px;
+        opacity:0.7;
+    }
+    .card{
+        background:#FFF8E1;
+        border:2px solid #222;
+        padding:32px 20px;
+        margin-bottom:24px;
+        min-height:80px;
+        display:flex;
+        align-content:center;
+        justify-content:center;
+        animation:fadeIn 0.2s ease-in;
+    }
+
+    .sentence{
+        font-size:22px;
+        line-height:1.4;
+    }
+
+    button{
+        font-family:'VT323',monospace;
+        font-size:20px;
+        padding:10px 32px;
+        background:#222;
+        color:#F5F1E8;
+        border:2px solid #222;
+        cursor:pointer;
+        transition:all 0.15s ease;
+    }
+    button:hover {
+        background:#F5F1E8;
+        color:#222;
+    }
+    .hint {
+        margin-top:12px;
+        font-size:14px;
+        opacity:0.6; 
+    }
+    footer {
+        margin-top:40px;
+        font-size:12px;
+        opacity:0.5;
+    }
+
+    @keyframes fadeIn {
+        from{
+            opacity:0;
+            transform:translateY(4px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+    </style>
+</HEAD>
+<body>
+ <div class="container">
+    <h1>RETRO CUTE</h1>
+    <div class="subtitle">random sentence generator</div>
+
+    <div class="card">
+        <div class="sentence" id="sentence">
+            오늘은 좀 괜찮은 날
+        </div>
+    </div>
+
+    <button id="generateBtn">GENERATE</button>
+    <div class="hint">press the button</div>
+
+    <footer>@ 1998 - cute system</footer>
+</div>
+
+<script>
+    const sentences =[
+        "윤민석 바보",
+        "두더지 윤민석",
+        "ㅇ헤헤헤헤",
+        "사랑해",
+        "오늘은 천천히.",
+        "그치만 꾸준히.",
+        "항상 응원해",
+    ];
+
+    const sentenceE1 =document.getElementById("sentence");
+    const btn = document.getElementById("generateBtn");
+
+    btn.addEventListener("click",()=>{
+      const randomIndex = Math.floor(Math.random() * sentences.length);
+      sentenceE1.textContent = sentences[randomIndex];
+      
+      //레트로 깜빡임 효과
+      sentenceE1.style.opacity=0;
+      setTimeout(() => {
+        sentenceE1.style.opacity =1;
+      },150);
+    });
+
+    //ENTER 키로도 실행
+    document.addEventListener("keydown",(e) =>{
+        if(e.key === "Enter"){
+            btn.click();
+        }
+    });
+    </script>     
+
+</body>
+</html>
